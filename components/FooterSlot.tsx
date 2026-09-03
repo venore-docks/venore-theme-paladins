@@ -2,46 +2,36 @@ import { Sitemap } from "@venore/theme-sdk/ui";
 import type { FooterSlotProps } from "@venore/theme-sdk";
 import { PlatformBrand } from "./PlatformBrand";
 
-// Marca num painel accent-soft + grid de sitemap real (Sitemap, componente reutilizável fora do
-// tema), mesma composição do PlatformFooter de referência (protótipo venore-docks,
-// platform-frame.tsx). brand.color aqui é o único lugar do app (fora da impressão de PDF do
-// plugin birthdays) que pinta algo com a cor de marca — um traço de acento sob a marca, cor de
-// negócio injetada via prop, não um token semântico shadcn (mesma exceção documentada em
-// build-birthday-pdf-html.ts). Server component puro, sem I/O — quem busca dado (getBrandConfig +
-// getMenuByLocation("sitemap")) é platform/theme-rendering/resolve-theme-slot-props.ts.
+// Rodapé centrado e simétrico — o mesmo eixo axial da Shell. Marca real (PlatformBrand) ao
+// centro, descrição, régua de losango, sitemap. Fio de ouro no topo (--header-border-strong).
+// brand.color não é consumido — o contrato só exige aceitar o campo.
 export function FooterSlot({ brand, sitemapItems, creditsEnabled }: FooterSlotProps) {
   return (
-    <footer className="mt-auto grid gap-8 border-t border-border px-4 py-10 text-muted-foreground sm:px-6 bg-background lg:grid-cols-[max-content_minmax(0,1fr)] lg:px-8)">
-      <div className="w-fit max-w-full justify-self-start space-y-5 rounded-panel bg-accent/14 px-5 py-6">
-        <div>
-          <div className="max-w-40 origin-left scale-125">
-            <PlatformBrand
-              name={brand.name}
-              mode={brand.mode}
-              size={brand.size}
-              scrolledSize={brand.scrolledSize}
-              position={brand.position}
-              logoUrl={brand.logoUrl}
-              scrolledLogoUrl={brand.scrolledLogoUrl}
-              isScrolled={false}
-            />
-          </div>
-          <span aria-hidden className="mt-4 block h-0.5 w-10 rounded-full bg-primary/30" />
+    <footer className="mt-auto border-t-2 border-(--header-border-strong) bg-card px-6 py-12 text-center">
+      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-6">
+        <div className="w-40">
+          <PlatformBrand {...brand} isScrolled={false} />
         </div>
         {brand.description.trim().length > 0 && (
-          <p className="max-w-[34ch] text-pretty text-xs leading-6 text-muted-foreground">{brand.description}</p>
+          <p className="max-w-[46ch] text-sm leading-6 text-muted-foreground">{brand.description}</p>
+        )}
+        <span aria-hidden="true" className="flex w-full items-center gap-3">
+          <span className="h-px flex-1 bg-primary/30" />
+          <span className="size-1.5 rotate-45 bg-primary/60" />
+          <span className="h-px flex-1 bg-primary/30" />
+        </span>
+        {sitemapItems.length > 0 && (
+          <div className="w-full">
+            <Sitemap items={sitemapItems} />
+          </div>
         )}
       </div>
 
-      <div className="pt-1">
-        <Sitemap items={sitemapItems} />
-      </div>
-
-      {creditsEnabled ? (
-        <div data-credits className="col-span-full border-t border-border pt-4 text-xs text-muted-foreground">
+      {creditsEnabled && (
+        <div data-credits className="mx-auto mt-8 max-w-3xl border-t border-border pt-4 text-xs text-muted-foreground">
           Venore Docks
         </div>
-      ) : null}
+      )}
     </footer>
   );
 }

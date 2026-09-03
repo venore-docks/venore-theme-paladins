@@ -1,20 +1,22 @@
 import { generateHueRotationPalettes, THEME_HUE_PRESETS } from "@venore/theme-sdk/palettes";
 
+// Base = ouro litúrgico + safira real do theme.css (esquema forte desta sessão). As rotações de
+// hue derivam variações mantendo a mesma força de chroma.
 export const PALADINS_COLOR_PALETTES = generateHueRotationPalettes(
   {
     light: {
-      primary: "oklch(0.62 0.13 75)",
-      primaryForeground: "oklch(0.99 0.01 90)",
-      accent: "oklch(0.7 0.11 235)",
-      accentForeground: "oklch(0.99 0.01 235)",
-      ring: "oklch(0.62 0.13 75)",
+      primary: "oklch(0.74 0.152 84)",
+      primaryForeground: "oklch(0.22 0.03 80)",
+      accent: "oklch(0.5 0.19 260)",
+      accentForeground: "oklch(0.98 0.02 260)",
+      ring: "oklch(0.62 0.17 84)",
     },
     dark: {
-      primary: "oklch(0.82 0.13 82)",
-      primaryForeground: "oklch(0.2 0.03 70)",
-      accent: "oklch(0.78 0.12 235)",
-      accentForeground: "oklch(0.16 0.03 235)",
-      ring: "oklch(0.82 0.13 82)",
+      primary: "oklch(0.82 0.15 85)",
+      primaryForeground: "oklch(0.2 0.03 80)",
+      accent: "oklch(0.68 0.16 258)",
+      accentForeground: "oklch(0.14 0.03 260)",
+      ring: "oklch(0.82 0.15 85)",
     },
   },
   THEME_HUE_PRESETS,

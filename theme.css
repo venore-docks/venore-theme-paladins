@@ -1,23 +1,17 @@
-/* Venore Slime — tema único, oficial e fallback (docs/venore-docks.md — "Sobre temas";
-   AGENTS.md seção 3). Este é o ÚNICO lugar do repositório onde um valor de design (cor, raio,
-   sombra, espaçamento, tipografia, peso, duração, curva de easing, proporção de escala) pode ser
-   declarado. src/app/globals.css consome essas variáveis via var(); nunca define valor novo.
+/* Venore Paladins — ordem sagrada. Ouro litúrgico + safira real sobre marfim (claro, "catedral
+   de dia") ou azul-meia-noite (escuro, "vigília à luz de vela"). Esquema forte e chapado —
+   correção desta sessão: a versão anterior tinha ouro/azul lavados (chroma ~0.11-0.13), lidos
+   como "tema fraco". Aqui o ouro é ouro de verdade e a safira é saturada. A Shell é axial
+   (nav central simétrica, sem coluna lateral) — reconhecível de longe como "outro tema".
 
-   Este tema nunca deve ser removido/deletado do registry (src/themes/registry.ts) — ele é o
-   fallback do sistema de temas quando nenhum outro está instalado.
-
-   [data-theme="venore-slime"] no <html> ativa este bloco; .dark também vive no <html> (nunca
-   aninhado), por isso a variante escura é o seletor composto abaixo, não um descendente. Tudo
-   que não muda entre light/dark (raio, motion, tipografia, dimensões de controle/painel,
-   proporções de escala) é declarado só no bloco base — herda para .dark pelo mesmo elemento. */
+   [data-theme="paladins"] no <html> ativa este bloco; .dark também vive no <html> (nunca
+   aninhado), por isso a variante escura é o seletor composto abaixo. */
 
 [data-theme="paladins"] {
-  /* raio */
-  --radius: 0.3rem;
+  /* raio — nave sóbria: canto quase reto, mas não zero */
+  --radius: 0.35rem;
   --radius-shell: 0rem;
-  --radius-panel: 0.2rem;
-  /* proporção da escala de raio (sm=0.5x, md=1x, lg=2x, xl=3x, 2xl=4x, 3xl=5x, 4xl=6x) —
-     progressão própria, não os multiplicadores do preset stock shadcn (ver globals.css). */
+  --radius-panel: 0.25rem;
   --ui-radius-scale-sm: 0.5;
   --ui-radius-scale-md: 1;
   --ui-radius-scale-lg: 2;
@@ -26,226 +20,212 @@
   --ui-radius-scale-3xl: 5;
   --ui-radius-scale-4xl: 6;
 
-  --ui-tracking-caps: 0.22em;
+  /* caps largo — inscrição em pedra */
+  --ui-tracking-caps: 0.24em;
 
-  /* motion — vocabulário único de transição, consumido via ui-motion-base / ui-motion-emphasis */
   --ui-motion-fast: 120ms;
   --ui-motion-base: 200ms;
-  --ui-motion-slow: 300ms;
+  --ui-motion-slow: 320ms;
   --ui-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
   --ui-ease-emphasis: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* tipografia */
   --ui-font-weight-body: 400;
   --ui-font-weight-medium: 500;
   --ui-font-weight-semibold: 600;
   --ui-font-weight-display: 700;
-  --ui-leading-copy: 1.5;
-  --ui-leading-display: 1.15;
+  --ui-leading-copy: 1.55;
+  --ui-leading-display: 1.14;
   --ui-tracking-copy: 0em;
-  --ui-tracking-display: -0.01em;
+  --ui-tracking-display: 0.004em;
 
-  /* controles — altura única pra button/input/select/tabs, resolve desalinhamento de formulário */
   --ui-control-height-xs: 1.75rem;
   --ui-control-height-sm: 2.25rem;
   --ui-control-height-md: 2.5rem;
-  --ui-control-height-lg: 2.75rem;
-  --ui-control-padding-x: 1rem;
-  /* proporção do padding-inline por tamanho de botão (xs=0.5x, sm=0.75x, lg=2x; md=1x é o
-     próprio --ui-control-padding-x, sem multiplicador) */
+  --ui-control-height-lg: 2.8rem;
+  --ui-control-padding-x: 1.1rem;
   --ui-button-padding-scale-xs: 0.5;
   --ui-button-padding-scale-sm: 0.75;
   --ui-button-padding-scale-lg: 2;
   --ui-button-gap: 0.5rem;
 
-  /* painéis */
-  --ui-panel-padding-x: 1.5rem;
-  --ui-panel-padding-y: 1.5rem;
+  --ui-panel-padding-x: 1.6rem;
+  --ui-panel-padding-y: 1.6rem;
 
-  /* base shadcn */
-  --background: oklch(0.98 0.012 90);
-  --foreground: oklch(0.3 0.03 60);
-  --card: oklch(0.995 0.006 90);
-  --card-foreground: oklch(0.3 0.03 60);
-  --popover: oklch(0.995 0.006 90);
-  --popover-foreground: oklch(0.3 0.03 60);
-  --primary: oklch(0.62 0.13 75);
-  --primary-foreground: oklch(0.99 0.01 90);
-  --secondary: oklch(0.95 0.02 88);
-  --secondary-foreground: oklch(0.32 0.03 60);
-  --muted: oklch(0.95 0.02 88);
-  --muted-foreground: oklch(0.5 0.03 70);
-  --accent: oklch(0.7 0.11 235);
-  --accent-foreground: oklch(0.99 0.01 235);
+  /* base shadcn — dia na catedral: marfim quente, ouro forte, safira real */
+  --background: oklch(0.975 0.014 92);
+  --foreground: oklch(0.25 0.028 265);
+  --card: oklch(0.995 0.005 95);
+  --card-foreground: oklch(0.25 0.028 265);
+  --popover: oklch(0.995 0.005 95);
+  --popover-foreground: oklch(0.25 0.028 265);
+  --primary: oklch(0.74 0.152 84);
+  --primary-foreground: oklch(0.22 0.03 80);
+  --secondary: oklch(0.945 0.022 88);
+  --secondary-foreground: oklch(0.28 0.028 265);
+  --muted: oklch(0.945 0.022 88);
+  --muted-foreground: oklch(0.44 0.032 265);
+  --accent: oklch(0.5 0.19 260);
+  --accent-foreground: oklch(0.98 0.02 260);
   --destructive: oklch(0.55 0.2 28);
   --destructive-foreground: oklch(0.98 0.01 28);
-  --border: oklch(0.9 0.018 88);
-  --input: oklch(0.9 0.018 88);
-  --ring: oklch(0.62 0.13 75);
+  --border: oklch(0.88 0.03 86);
+  --input: oklch(0.88 0.03 86);
+  --ring: oklch(0.62 0.17 84);
 
-  /* shadow — cor base + variantes soft via color-mix, mesma cadeia do repositório de referência */
-  --shadow-color: oklch(0.76 0.024 225.7);
-  --shadow-color-strong: oklch(0.55 0.026 225.7);
-  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 38%, transparent);
-  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 32%, transparent);
-  --shadow-panel: 0 24px 80px -48px var(--shadow-color-soft);
-  --shadow-float: 0 18px 44px -28px var(--shadow-color-strong-soft);
-  --shadow-header: 0 12px 30px -24px var(--shadow-color-strong-soft);
+  --shadow-color: oklch(0.7 0.04 84);
+  --shadow-color-strong: oklch(0.42 0.05 265);
+  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 30%, transparent);
+  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 24%, transparent);
+  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 18px 48px -30px var(--shadow-color-soft);
+  --shadow-float: 0 20px 50px -28px var(--shadow-color-strong-soft);
+  --shadow-header: 0 1px 0 0 color-mix(in oklch, var(--primary) 40%, var(--border));
 
-  /* sidebar — largura das duas colunas de grid (expandida/colapsada). Valores idênticos aos do
-     protótipo de referência (docs/ui/shell-spec.md §3.1: 280px/88px) — pedido explícito de paridade
-     visual exata nesta sessão, não estimativa nossa. Mesmo valor em light/dark (não é token de
-     cor), por isso declarado só uma vez no bloco base. */
   --sidebar-width-expanded: 17.5rem;
   --sidebar-width-collapsed: 5.5rem;
 
-  --sidebar-bg-start: oklch(0.975 0.018 88);
-  --sidebar-bg-end: oklch(0.955 0.026 84);
-  --sidebar-bg: linear-gradient(180deg, oklch(0.975 0.018 88) 0%, oklch(0.955 0.026 84) 100%);
-  --sidebar-bg-admin-start: oklch(0.965 0.02 235);
-  --sidebar-bg-admin-end: oklch(0.945 0.03 235);
-  --sidebar-bg-admin: linear-gradient(180deg, oklch(0.965 0.02 235) 0%, oklch(0.945 0.03 235) 100%);
+  --sidebar-bg-start: oklch(0.965 0.02 88);
+  --sidebar-bg-end: oklch(0.95 0.026 84);
+  --sidebar-bg: linear-gradient(180deg, oklch(0.965 0.02 88) 0%, oklch(0.95 0.026 84) 100%);
+  --sidebar-bg-admin-start: oklch(0.95 0.03 260);
+  --sidebar-bg-admin-end: oklch(0.935 0.036 260);
+  --sidebar-bg-admin: linear-gradient(180deg, oklch(0.95 0.03 260) 0%, oklch(0.935 0.036 260) 100%);
 
-  /* status semântico — texto/banner de aviso. */
-  --warning: oklch(0.48 0.096 65);
-  --warning-foreground: oklch(0.98 0.01 65);
-  --warning-soft: oklch(0.935 0.052 65);
-  --warning-border: oklch(0.76 0.157 65);
+  --warning: oklch(0.58 0.13 74);
+  --warning-foreground: oklch(0.98 0.01 74);
+  --warning-soft: color-mix(in oklch, var(--warning) 13%, var(--card));
+  --warning-border: color-mix(in oklch, var(--warning) 32%, var(--border));
 
-  /* status semântico — sucesso. */
-  --success: oklch(0.43 0.088 142.4);
-  --success-foreground: oklch(0.98 0.01 142.4);
-  --success-soft: oklch(0.92 0.035 142.4);
-  --success-border: oklch(0.674 0.104 142.4);
+  --success: oklch(0.5 0.13 150);
+  --success-foreground: oklch(0.98 0.01 150);
+  --success-soft: color-mix(in oklch, var(--success) 13%, var(--card));
+  --success-border: color-mix(in oklch, var(--success) 32%, var(--border));
 
-  /* charts — reaproveita o vocabulário shadcn já declarado acima, não introduz cor nova; usado
-     pelo componente shadcn "chart" (Recharts) via var(--chart-N) no ChartConfig de cada bloco. */
   --chart-1: var(--primary);
   --chart-2: var(--accent);
   --chart-3: var(--muted-foreground);
   --chart-4: var(--warning);
   --chart-5: var(--destructive);
+  --chart-6: oklch(0.55 0.14 230);
+  --chart-7: oklch(0.58 0.15 30);
 
-  /* chart-6/chart-7 — par categórico oficial do sistema de temas (todo tema instalado declara os
-     dois, ver src/themes/venore-slime/theme.css para o racional completo). Hue/chroma próprios
-     deste tema (azul petróleo 230 / terracota 20, chroma ~0.11), não o par default 235/350 —
-     "Menonita Classic" é deliberadamente pouco saturado (chroma ~0.02-0.16 em todo o resto do
-     tema); o par default (chroma 0.16-0.18) destoava, lido como "cor errada pro tema". Validado
-     com scripts/validate_palette.js do skill de dataviz. */
-  --chart-6: oklch(0.48 0.11 230);
-  --chart-7: oklch(0.5 0.12 20);
-
-  /* Superfície "apresentação" — telão/projetor/slide, sempre a versão escura deste tema,
-     independente do light/dark ativo (ver racional completo em venore-slime/theme.css). */
-  /* Texto/borda sobre imagem com véu escuro (ex: capa de curso na Academy) — claro
-     independente de light/dark, por isso só no bloco base. Ver venore-slime/theme.css. */
   --overlay-foreground: oklch(1 0 0);
 
-  --presentation-ground: oklch(0.18 0.018 225.7);
-  --presentation-card: oklch(0.225 0.02 225.7);
-  --presentation-border: oklch(0.34 0.024 225.7);
-  --presentation-foreground: oklch(0.973 0.01 219.6);
-  --presentation-muted-foreground: oklch(0.84 0.02 219.6);
+  --presentation-ground: oklch(0.17 0.03 265);
+  --presentation-card: oklch(0.22 0.032 265);
+  --presentation-border: oklch(0.34 0.036 264);
+  --presentation-foreground: oklch(0.96 0.012 88);
+  --presentation-muted-foreground: oklch(0.8 0.024 260);
 
-  --presentation-success: oklch(0.84 0.075 142.4);
+  --presentation-success: oklch(0.72 0.16 150);
   --presentation-success-soft: color-mix(in oklch, var(--presentation-success) 16%, var(--presentation-card));
   --presentation-success-border: color-mix(in oklch, var(--presentation-success) 34%, var(--presentation-border));
 
-  --presentation-warning: oklch(0.88 0.11 65);
+  --presentation-warning: oklch(0.8 0.14 78);
   --presentation-warning-soft: color-mix(in oklch, var(--presentation-warning) 16%, var(--presentation-card));
   --presentation-warning-border: color-mix(in oklch, var(--presentation-warning) 34%, var(--presentation-border));
 
-  --presentation-destructive: oklch(0.695 0.16 38.3);
+  --presentation-destructive: oklch(0.64 0.21 28);
+  --presentation-renewed: oklch(0.6 0.14 230);
+  --presentation-new: oklch(0.62 0.15 30);
 
-  /* presentation-renewed/new — versão invariante de chart-6/chart-7 pra composição dentro da
-     superfície de apresentação (sempre escura). chart-6/chart-7 puros trocam de valor com
-     light/dark (são pensados pra gráfico normal, dentro do app); reaproveitá-los direto na
-     apresentação faria a cor mudar com o tema do admin mesmo a superfície sendo sempre escura —
-     por isso precisam do próprio par fixo aqui, com o mesmo valor do bloco .dark abaixo. */
-  --presentation-renewed: oklch(0.6 0.11 230);
-  --presentation-new: oklch(0.63 0.12 20);
-
-  /* identidade — gradiente de fundo do app e família de tokens do header. Só o que é IDENTIDADE
-     deste tema mora aqui à parte do vocabulário shadcn acima; o vocabulário shadcn também só
-     existe neste arquivo (é o único tema instalado), mas continua nomeado de forma genérica —
-     um segundo tema instalado redeclarararia essas mesmas variáveis sob seu próprio
-     [data-theme="..."], nunca por cima de "venore-slime". */
-  --app-bg-start: oklch(0.99 0.01 92);
-  --app-bg-mid: oklch(0.948 0.01 238.5);
+  /* identidade — halo dourado irradiando do alto (sacro), superfície chapada por baixo */
+  --app-bg-start: oklch(0.98 0.014 92);
+  --app-bg-mid: oklch(0.965 0.02 88);
   --app-bg-end: oklch(0.955 0.024 84);
-  --app-background: radial-gradient(120% 70% at 50% -10%, color-mix(in oklch, oklch(0.62 0.13 75) 14%, transparent) 0%, transparent 60%), linear-gradient(180deg, oklch(0.99 0.01 92) 0%, oklch(0.955 0.024 84) 100%);
+  --app-background:
+    radial-gradient(78% 52% at 50% -14%, color-mix(in oklch, oklch(0.74 0.152 84) 24%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg, oklch(0.98 0.014 92) 0%, oklch(0.955 0.024 84) 100%);
 
-  --header-bg: oklch(0.965 0.008 219.6);
+  --header-bg: oklch(0.985 0.01 90);
   --header-chip-bg: color-mix(in oklch, var(--header-bg) 74%, var(--card));
   --header-avatar-bg: color-mix(in oklch, var(--accent) 18%, var(--header-bg));
   --header-avatar-fg: var(--foreground);
-  --header-border-subtle: color-mix(in oklch, var(--header-bg) 28%, var(--border));
-  --header-border-strong: color-mix(in oklch, var(--accent) 36%, var(--ring));
+  --header-border-subtle: color-mix(in oklch, var(--header-bg) 26%, var(--border));
+  --header-border-strong: color-mix(in oklch, var(--primary) 50%, var(--ring));
 }
 
 [data-theme="paladins"].dark {
-  --background: oklch(0.21 0.02 260);
-  --foreground: oklch(0.95 0.014 88);
-  --card: oklch(0.25 0.022 258);
-  --card-foreground: oklch(0.95 0.014 88);
-  --popover: oklch(0.25 0.022 258);
-  --popover-foreground: oklch(0.95 0.014 88);
-  --primary: oklch(0.82 0.13 82);
-  --primary-foreground: oklch(0.2 0.03 70);
-  --secondary: oklch(0.3 0.024 258);
-  --secondary-foreground: oklch(0.95 0.014 88);
-  --muted: oklch(0.3 0.024 258);
-  --muted-foreground: oklch(0.72 0.02 84);
-  --accent: oklch(0.78 0.12 235);
-  --accent-foreground: oklch(0.16 0.03 235);
+  /* base shadcn — vigília: azul-meia-noite, ouro de vela, safira luminosa */
+  --background: oklch(0.19 0.03 265);
+  --foreground: oklch(0.94 0.014 88);
+  --card: oklch(0.235 0.032 265);
+  --card-foreground: oklch(0.94 0.014 88);
+  --popover: oklch(0.235 0.032 265);
+  --popover-foreground: oklch(0.94 0.014 88);
+  --primary: oklch(0.82 0.15 85);
+  --primary-foreground: oklch(0.2 0.03 80);
+  --secondary: oklch(0.29 0.03 265);
+  --secondary-foreground: oklch(0.94 0.014 88);
+  --muted: oklch(0.29 0.03 265);
+  --muted-foreground: oklch(0.72 0.024 260);
+  --accent: oklch(0.68 0.16 258);
+  --accent-foreground: oklch(0.14 0.03 260);
   --destructive: oklch(0.64 0.21 28);
   --destructive-foreground: oklch(0.98 0.01 28);
-  --border: oklch(0.36 0.024 255);
-  --input: oklch(0.36 0.024 255);
-  --ring: oklch(0.82 0.13 82);
+  --border: oklch(0.36 0.03 262);
+  --input: oklch(0.36 0.03 262);
+  --ring: oklch(0.82 0.15 85);
 
-  --shadow-color: oklch(0.12 0.015 225.7);
-  --shadow-color-strong: oklch(0.08 0.012 225.7);
-  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 38%, transparent);
-  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 32%, transparent);
-  --shadow-panel: 0 24px 80px -48px var(--shadow-color-soft);
-  --shadow-float: 0 18px 44px -28px var(--shadow-color-strong-soft);
-  --shadow-header: 0 12px 30px -24px var(--shadow-color-strong-soft);
+  --shadow-color: oklch(0.08 0.02 265);
+  --shadow-color-strong: oklch(0.04 0.014 265);
+  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 44%, transparent);
+  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 40%, transparent);
+  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 18px 48px -28px var(--shadow-color-soft);
+  --shadow-float: 0 20px 50px -26px var(--shadow-color-strong-soft);
+  --shadow-header: 0 1px 0 0 color-mix(in oklch, var(--primary) 44%, var(--border));
 
-  --sidebar-bg-start: oklch(0.2 0.02 258);
-  --sidebar-bg-end: oklch(0.165 0.018 260);
-  --sidebar-bg: linear-gradient(180deg, oklch(0.2 0.02 258) 0%, oklch(0.165 0.018 260) 100%);
-  --sidebar-bg-admin-start: oklch(0.22 0.03 235);
-  --sidebar-bg-admin-end: oklch(0.18 0.026 235);
-  --sidebar-bg-admin: linear-gradient(180deg, oklch(0.22 0.03 235) 0%, oklch(0.18 0.026 235) 100%);
+  --sidebar-bg-start: oklch(0.2 0.03 265);
+  --sidebar-bg-end: oklch(0.17 0.026 266);
+  --sidebar-bg: linear-gradient(180deg, oklch(0.2 0.03 265) 0%, oklch(0.168 0.026 266) 100%);
+  --sidebar-bg-admin-start: oklch(0.22 0.038 260);
+  --sidebar-bg-admin-end: oklch(0.185 0.032 260);
+  --sidebar-bg-admin: linear-gradient(180deg, oklch(0.22 0.038 260) 0%, oklch(0.183 0.032 260) 100%);
 
-  --warning: oklch(0.88 0.11 65);
-  --warning-foreground: oklch(0.17 0.02 65);
-  --warning-soft: oklch(0.31 0.052 65);
-  --warning-border: oklch(0.76 0.157 65);
+  --warning: oklch(0.8 0.14 78);
+  --warning-foreground: oklch(0.17 0.02 78);
+  --warning-soft: color-mix(in oklch, var(--warning) 17%, var(--card));
+  --warning-border: color-mix(in oklch, var(--warning) 36%, var(--border));
 
-  --success: oklch(0.84 0.075 142.4);
-  --success-foreground: oklch(0.17 0.02 142.4);
-  --success-soft: oklch(0.29 0.045 142.4);
-  --success-border: oklch(0.674 0.104 142.4);
+  --success: oklch(0.72 0.16 150);
+  --success-foreground: oklch(0.15 0.02 150);
+  --success-soft: color-mix(in oklch, var(--success) 17%, var(--card));
+  --success-border: color-mix(in oklch, var(--success) 36%, var(--border));
 
   --chart-1: var(--primary);
   --chart-2: var(--accent);
   --chart-3: var(--muted-foreground);
   --chart-4: var(--warning);
   --chart-5: var(--destructive);
-  --chart-6: oklch(0.6 0.11 230);
-  --chart-7: oklch(0.63 0.12 20);
+  --chart-6: oklch(0.62 0.14 230);
+  --chart-7: oklch(0.64 0.15 30);
 
-  --app-bg-start: oklch(0.22 0.02 258);
-  --app-bg-mid: oklch(0.22 0.024 225.7);
-  --app-bg-end: oklch(0.18 0.018 260);
-  --app-background: radial-gradient(120% 70% at 50% -10%, color-mix(in oklch, oklch(0.82 0.13 82) 16%, transparent) 0%, transparent 55%), linear-gradient(180deg, oklch(0.22 0.02 258) 0%, oklch(0.17 0.018 260) 100%);
+  --app-bg-start: oklch(0.2 0.03 265);
+  --app-bg-mid: oklch(0.18 0.028 265);
+  --app-bg-end: oklch(0.16 0.024 266);
+  --app-background:
+    radial-gradient(78% 52% at 50% -14%, color-mix(in oklch, oklch(0.82 0.15 85) 20%, transparent) 0%, transparent 58%),
+    linear-gradient(180deg, oklch(0.2 0.03 265) 0%, oklch(0.158 0.024 266) 100%);
 
-  --header-bg: oklch(0.238 0.022 225.7);
+  --header-bg: oklch(0.215 0.032 265);
   --header-chip-bg: color-mix(in oklch, var(--header-bg) 74%, var(--card));
-  --header-avatar-bg: color-mix(in oklch, var(--accent) 18%, var(--header-bg));
+  --header-avatar-bg: color-mix(in oklch, var(--accent) 20%, var(--header-bg));
   --header-avatar-fg: var(--foreground);
-  --header-border-subtle: color-mix(in oklch, var(--header-bg) 28%, var(--border));
-  --header-border-strong: color-mix(in oklch, var(--accent) 36%, var(--ring));
+  --header-border-subtle: color-mix(in oklch, var(--header-bg) 26%, var(--border));
+  --header-border-strong: color-mix(in oklch, var(--primary) 50%, var(--ring));
+}
+
+/* Identidade sacra — escopada ao tema. Fio de ouro em painéis e controles; base de safira nos
+   inputs. As réguas de losango (divisórias ornamentadas) são renderizadas em JSX pelo ContentSlot,
+   não aqui. */
+[data-theme="paladins"] [data-slot="card"],
+[data-theme="paladins"] .rounded-panel {
+  border: 1px solid color-mix(in oklch, var(--primary) 40%, var(--border));
+}
+[data-theme="paladins"] [data-slot="button"] {
+  border: 1px solid color-mix(in oklch, var(--primary) 46%, var(--border));
+}
+[data-theme="paladins"] [data-slot="input"],
+[data-theme="paladins"] [data-slot="select-trigger"] {
+  border-bottom-width: 2px;
+  border-bottom-color: color-mix(in oklch, var(--accent) 44%, var(--border));
 }
