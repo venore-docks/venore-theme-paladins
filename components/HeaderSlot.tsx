@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { HeaderSlotProps } from "@venore/theme-sdk";
 import { UserMenu } from "./UserMenu";
 import { MobileNavToggleButton } from "./MobileNavToggleButton";
-import { PlatformBrand } from "./PlatformBrand";
+import { BrandMark } from "./BrandMark";
 import { HeaderScrollSentinel } from "./HeaderScrollSentinel";
 
 // Header encolhe e inverte pra bg-primary/text-primary-foreground ao rolar (docs/ui/shell-spec.md
@@ -39,7 +39,7 @@ export function HeaderSlot({ brand, userbarEnabled, headerNavItems, user, canAcc
               (brand.position === "center" ? "absolute left-1/2 -translate-x-1/2" : "")
             }
           >
-            <PlatformBrand {...brand} isScrolled={false} />
+            <BrandMark name={brand.name} />
           </Link>
         </div>
 
