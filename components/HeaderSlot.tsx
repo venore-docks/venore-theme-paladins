@@ -35,7 +35,7 @@ export function HeaderSlot({ brand, userbarEnabled, headerNavItems, user, canAcc
             href="/"
             aria-label={brand.name}
             className={
-              "inline-flex items-center " +
+              "inline-flex items-center py-2 " +
               (brand.position === "center" ? "absolute left-1/2 -translate-x-1/2" : "")
             }
           >
