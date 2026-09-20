@@ -2,15 +2,15 @@ import type { ThemeShellProps } from "@venore/theme-sdk";
 import { HeaderSlot } from "./HeaderSlot";
 import { FooterSlot } from "./FooterSlot";
 import { ContentSlot } from "./ContentSlot";
-import { CenterNav } from "./CenterNav";
-import { MobileNav } from "./MobileNav";
+import { SidebarLeftSlot } from "./SidebarLeftSlot";
 
-// Arranjo AXIAL (docs/themes/shell-contract.md — Abordagem A): tudo alinhado a um eixo central de
-// simetria — cabeçalho cerimonial com a marca ao centro, uma fileira de navegação centrada logo
-// abaixo (CenterNav, desktop) / drawer (MobileNav, mobile), coluna de conteúdo estreita e
-// centrada entre réguas de losango, rodapé centrado. Sem nenhuma coluna lateral: reconhecível de
-// longe como "outro tema", distinto do Slime (sidebar), do rail do Nightcity/Druids e do híbrido
-// do Knights.
+// "Sanctum" — simetria cerimonial. Header full-width no topo com a marca CENTRALIZADA
+// (brandAesthetics.position: "center" no manifest — capacidade que já existe no contrato, só
+// nenhum tema usava), sidebar à esquerda com um brilho "crista" no topo (ver SidebarLeftSlot.tsx)
+// e o --app-background do theme.css é um halo radial dourado por trás do conteúdo, não o
+// gradiente quase-plano do Venore Slime. A árvore em si (header em cima, sidebar+conteúdo
+// abaixo) é a mais simples possível — a identidade vem da simetria e da luz, não de um arranjo
+// exótico de regiões.
 export function Shell({
   header,
   footer,
@@ -22,19 +22,22 @@ export function Shell({
   breadcrumbsJsonLd,
 }: ThemeShellProps) {
   return (
-    <div className="flex min-h-full flex-1 flex-col">
+    <div className="flex min-h-dvh flex-col">
       <HeaderSlot {...header} />
-      <CenterNav {...sidebarLeft} />
-      <MobileNav {...sidebarLeft} />
-      <ContentSlot
-        sidebarContextualEnabled={sidebarContextualEnabled}
-        sidebarContextual={sidebarContextual}
-        breadcrumbs={breadcrumbs}
-        breadcrumbsJsonLd={breadcrumbsJsonLd}
-      >
-        {children}
-      </ContentSlot>
-      <FooterSlot {...footer} />
+      <div className="flex flex-1">
+        <SidebarLeftSlot {...sidebarLeft} />
+        <div className="flex min-w-0 flex-1 flex-col">
+          <ContentSlot
+            sidebarContextualEnabled={sidebarContextualEnabled}
+            sidebarContextual={sidebarContextual}
+            breadcrumbs={breadcrumbs}
+            breadcrumbsJsonLd={breadcrumbsJsonLd}
+          >
+            {children}
+          </ContentSlot>
+          <FooterSlot {...footer} />
+        </div>
+      </div>
     </div>
   );
 }

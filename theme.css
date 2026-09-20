@@ -1,231 +1,233 @@
-/* Venore Paladins — ordem sagrada. Ouro litúrgico + safira real sobre marfim (claro, "catedral
-   de dia") ou azul-meia-noite (escuro, "vigília à luz de vela"). Esquema forte e chapado —
-   correção desta sessão: a versão anterior tinha ouro/azul lavados (chroma ~0.11-0.13), lidos
-   como "tema fraco". Aqui o ouro é ouro de verdade e a safira é saturada. A Shell é axial
-   (nav central simétrica, sem coluna lateral) — reconhecível de longe como "outro tema".
+/* Venore Paladins — "Sanctum": simetria cerimonial, dourado radiante. Refatoração completa
+   (pedido desta sessão) — shell nova (marca centralizada no header, brilho "crista" no topo da
+   sidebar, halo radial por trás do app) e paleta nova (ouro sobre marfim quente, não mais o
+   ouro antigo #c99a3e sobre neutros genéricos).
 
-   [data-theme="paladins"] no <html> ativa este bloco; .dark também vive no <html> (nunca
+   Regra desta sessão (mesma do Aurora): o modo CLARO é mais colorido/saturado que o escuro — o
+   dourado do --primary tem mais chroma no bloco base do que no .dark.
+
+   [data-theme="paladins"] no <html> ativa o bloco base; .dark também vive no <html> (nunca
    aninhado), por isso a variante escura é o seletor composto abaixo. */
 
 [data-theme="paladins"] {
-  /* raio — nave sóbria: canto quase reto, mas não zero */
-  --radius: 0.35rem;
+  /* raio — generoso, sem virar pílula; cerimonial, não brutalista. */
+  --radius: 0.75rem;
   --radius-shell: 0rem;
-  --radius-panel: 0.25rem;
-  --ui-radius-scale-sm: 0.5;
+  --radius-panel: 1rem;
+  --ui-radius-scale-sm: 0.6;
   --ui-radius-scale-md: 1;
-  --ui-radius-scale-lg: 2;
-  --ui-radius-scale-xl: 3;
-  --ui-radius-scale-2xl: 4;
-  --ui-radius-scale-3xl: 5;
-  --ui-radius-scale-4xl: 6;
+  --ui-radius-scale-lg: 1.7;
+  --ui-radius-scale-xl: 2.4;
+  --ui-radius-scale-2xl: 3;
+  --ui-radius-scale-3xl: 3.6;
+  --ui-radius-scale-4xl: 4.2;
 
-  /* caps largo — inscrição em pedra */
-  --ui-tracking-caps: 0.24em;
+  /* tracking-caps largo — rótulos "gravados", espaçados como uma inscrição. */
+  --ui-tracking-caps: 0.16em;
 
-  --ui-motion-fast: 120ms;
-  --ui-motion-base: 200ms;
-  --ui-motion-slow: 320ms;
-  --ui-ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
-  --ui-ease-emphasis: cubic-bezier(0.22, 1, 0.36, 1);
+  /* motion — digno, sem pressa, sem ser lento. */
+  --ui-motion-fast: 150ms;
+  --ui-motion-base: 260ms;
+  --ui-motion-slow: 400ms;
+  --ui-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ui-ease-emphasis: cubic-bezier(0.16, 1, 0.3, 1);
 
   --ui-font-weight-body: 400;
   --ui-font-weight-medium: 500;
   --ui-font-weight-semibold: 600;
   --ui-font-weight-display: 700;
-  --ui-leading-copy: 1.55;
-  --ui-leading-display: 1.14;
+  --ui-leading-copy: 1.6;
+  --ui-leading-display: 1.15;
   --ui-tracking-copy: 0em;
-  --ui-tracking-display: 0.004em;
+  --ui-tracking-display: -0.005em;
 
   --ui-control-height-xs: 1.75rem;
   --ui-control-height-sm: 2.25rem;
   --ui-control-height-md: 2.5rem;
-  --ui-control-height-lg: 2.8rem;
-  --ui-control-padding-x: 1.1rem;
-  --ui-button-padding-scale-xs: 0.5;
-  --ui-button-padding-scale-sm: 0.75;
+  --ui-control-height-lg: 2.75rem;
+  --ui-control-padding-x: 1.25rem;
+  --ui-button-padding-scale-xs: 0.55;
+  --ui-button-padding-scale-sm: 0.78;
   --ui-button-padding-scale-lg: 2;
-  --ui-button-gap: 0.5rem;
+  --ui-button-gap: 0.625rem;
 
-  --ui-panel-padding-x: 1.6rem;
-  --ui-panel-padding-y: 1.6rem;
+  --ui-panel-padding-x: 1.75rem;
+  --ui-panel-padding-y: 1.75rem;
 
-  /* base shadcn — dia na catedral: marfim quente, ouro forte, safira real */
-  --background: oklch(0.975 0.014 92);
-  --foreground: oklch(0.25 0.028 265);
-  --card: oklch(0.995 0.005 95);
-  --card-foreground: oklch(0.25 0.028 265);
-  --popover: oklch(0.995 0.005 95);
-  --popover-foreground: oklch(0.25 0.028 265);
-  --primary: oklch(0.74 0.152 84);
-  --primary-foreground: oklch(0.22 0.03 80);
-  --secondary: oklch(0.945 0.022 88);
-  --secondary-foreground: oklch(0.28 0.028 265);
-  --muted: oklch(0.945 0.022 88);
-  --muted-foreground: oklch(0.44 0.032 265);
-  --accent: oklch(0.5 0.19 260);
-  --accent-foreground: oklch(0.98 0.02 260);
-  --destructive: oklch(0.55 0.2 28);
-  --destructive-foreground: oklch(0.98 0.01 28);
-  --border: oklch(0.88 0.03 86);
-  --input: oklch(0.88 0.03 86);
-  --ring: oklch(0.62 0.17 84);
+  /* base shadcn — marfim quente, dourado vívido (mais chroma aqui que no .dark, de propósito). */
+  --background: oklch(0.97 0.02 85);
+  --foreground: oklch(0.22 0.03 60);
+  --card: oklch(0.995 0.01 85);
+  --card-foreground: oklch(0.22 0.03 60);
+  --popover: oklch(0.995 0.01 85);
+  --popover-foreground: oklch(0.22 0.03 60);
+  --primary: oklch(0.62 0.16 80);
+  --primary-foreground: oklch(0.18 0.03 60);
+  --secondary: oklch(0.93 0.025 80);
+  --secondary-foreground: oklch(0.28 0.03 60);
+  --muted: oklch(0.93 0.025 80);
+  --muted-foreground: oklch(0.48 0.02 65);
+  --accent: oklch(0.88 0.06 85);
+  --accent-foreground: oklch(0.24 0.04 70);
+  --destructive: oklch(0.55 0.19 25);
+  --destructive-foreground: oklch(0.98 0.01 25);
+  --border: oklch(0.87 0.02 80);
+  --input: oklch(0.85 0.02 80);
+  --ring: oklch(0.62 0.14 80);
 
-  --shadow-color: oklch(0.7 0.04 84);
-  --shadow-color-strong: oklch(0.42 0.05 265);
-  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 30%, transparent);
-  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 24%, transparent);
-  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 18px 48px -30px var(--shadow-color-soft);
-  --shadow-float: 0 20px 50px -28px var(--shadow-color-strong-soft);
-  --shadow-header: 0 1px 0 0 color-mix(in oklch, var(--primary) 40%, var(--border));
+  --shadow-color: oklch(0.6 0.03 75);
+  --shadow-color-strong: oklch(0.4 0.03 70);
+  --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 20%, transparent);
+  --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 18%, transparent);
+  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 10px 26px -14px var(--shadow-color-soft);
+  --shadow-float: 0 2px 6px -2px var(--shadow-color-strong-soft), 0 16px 34px -14px var(--shadow-color-strong-soft);
+  --shadow-header: 0 1px 0 0 var(--border);
 
-  --sidebar-width-expanded: 17.5rem;
-  --sidebar-width-collapsed: 5.5rem;
+  --sidebar-width-expanded: 17rem;
+  --sidebar-width-collapsed: 4.75rem;
 
-  --sidebar-bg-start: oklch(0.965 0.02 88);
-  --sidebar-bg-end: oklch(0.95 0.026 84);
-  --sidebar-bg: linear-gradient(180deg, oklch(0.965 0.02 88) 0%, oklch(0.95 0.026 84) 100%);
-  --sidebar-bg-admin-start: oklch(0.95 0.03 260);
-  --sidebar-bg-admin-end: oklch(0.935 0.036 260);
-  --sidebar-bg-admin: linear-gradient(180deg, oklch(0.95 0.03 260) 0%, oklch(0.935 0.036 260) 100%);
+  /* main-nav e admin-nav com o MESMO painel (mesma decisão do Aurora) — a diferença de modo é a
+     borda (ver SidebarLeftSlot.tsx: border-ring mais grossa no admin, hairline --border no main). */
+  --sidebar-bg-start: oklch(0.94 0.03 82);
+  --sidebar-bg-end: oklch(0.9 0.045 80);
+  --sidebar-bg: linear-gradient(180deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+  --sidebar-bg-admin-start: oklch(0.94 0.03 82);
+  --sidebar-bg-admin-end: oklch(0.9 0.045 80);
+  --sidebar-bg-admin: linear-gradient(180deg, var(--sidebar-bg-admin-start) 0%, var(--sidebar-bg-admin-end) 100%);
 
-  --warning: oklch(0.58 0.13 74);
-  --warning-foreground: oklch(0.98 0.01 74);
-  --warning-soft: color-mix(in oklch, var(--warning) 13%, var(--card));
-  --warning-border: color-mix(in oklch, var(--warning) 32%, var(--border));
+  /* brilho "crista" no topo da sidebar (token próprio deste tema, ver SidebarLeftSlot.tsx) — um
+     halo radial dourado, só declarado no bloco base: --primary muda no .dark e este token
+     re-resolve sozinho (color-mix referencia var(--primary), não precisa redeclarar lá). */
+  --sidebar-crest-glow: radial-gradient(
+    120% 70% at 50% 0%,
+    color-mix(in oklch, var(--primary) 24%, transparent) 0%,
+    transparent 70%
+  );
 
-  --success: oklch(0.5 0.13 150);
-  --success-foreground: oklch(0.98 0.01 150);
-  --success-soft: color-mix(in oklch, var(--success) 13%, var(--card));
-  --success-border: color-mix(in oklch, var(--success) 32%, var(--border));
+  --warning: oklch(0.62 0.16 55);
+  --warning-foreground: oklch(0.98 0.01 55);
+  --warning-soft: color-mix(in oklch, var(--warning) 12%, var(--card));
+  --warning-border: color-mix(in oklch, var(--warning) 28%, var(--border));
+
+  --success: oklch(0.55 0.13 145);
+  --success-foreground: oklch(0.98 0.01 145);
+  --success-soft: color-mix(in oklch, var(--success) 12%, var(--card));
+  --success-border: color-mix(in oklch, var(--success) 28%, var(--border));
 
   --chart-1: var(--primary);
-  --chart-2: var(--accent);
+  --chart-2: oklch(0.58 0.11 200);
   --chart-3: var(--muted-foreground);
   --chart-4: var(--warning);
   --chart-5: var(--destructive);
-  --chart-6: oklch(0.55 0.14 230);
-  --chart-7: oklch(0.58 0.15 30);
+  --chart-6: oklch(0.56 0.14 235);
+  --chart-7: oklch(0.6 0.15 350);
 
   --overlay-foreground: oklch(1 0 0);
 
-  --presentation-ground: oklch(0.17 0.03 265);
-  --presentation-card: oklch(0.22 0.032 265);
-  --presentation-border: oklch(0.34 0.036 264);
-  --presentation-foreground: oklch(0.96 0.012 88);
-  --presentation-muted-foreground: oklch(0.8 0.024 260);
-
-  --presentation-success: oklch(0.72 0.16 150);
+  /* superfície "apresentação" — sempre a versão escura do tema, frozen (só bloco base). */
+  --presentation-ground: oklch(0.19 0.014 70);
+  --presentation-card: oklch(0.23 0.016 72);
+  --presentation-border: oklch(0.34 0.02 72);
+  --presentation-foreground: oklch(0.93 0.014 80);
+  --presentation-muted-foreground: oklch(0.75 0.016 75);
+  --presentation-success: oklch(0.66 0.12 145);
   --presentation-success-soft: color-mix(in oklch, var(--presentation-success) 16%, var(--presentation-card));
   --presentation-success-border: color-mix(in oklch, var(--presentation-success) 34%, var(--presentation-border));
-
-  --presentation-warning: oklch(0.8 0.14 78);
+  --presentation-warning: oklch(0.72 0.15 55);
   --presentation-warning-soft: color-mix(in oklch, var(--presentation-warning) 16%, var(--presentation-card));
   --presentation-warning-border: color-mix(in oklch, var(--presentation-warning) 34%, var(--presentation-border));
+  --presentation-destructive: oklch(0.6 0.2 25);
+  --presentation-renewed: oklch(0.58 0.14 235);
+  --presentation-new: oklch(0.6 0.15 350);
 
-  --presentation-destructive: oklch(0.64 0.21 28);
-  --presentation-renewed: oklch(0.6 0.14 230);
-  --presentation-new: oklch(0.62 0.15 30);
+  /* halo radial dourado por trás do app inteiro — não o gradiente quase-plano do Venore Slime. */
+  --app-bg-start: oklch(0.975 0.014 85);
+  --app-bg-mid: oklch(0.96 0.02 83);
+  --app-bg-end: oklch(0.95 0.024 80);
+  --app-background: radial-gradient(
+      130% 90% at 50% 0%,
+      color-mix(in oklch, var(--primary) 10%, transparent) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--app-bg-start) 0%, var(--app-bg-mid) 55%, var(--app-bg-end) 100%);
 
-  /* identidade — halo dourado irradiando do alto (sacro), superfície chapada por baixo */
-  --app-bg-start: oklch(0.98 0.014 92);
-  --app-bg-mid: oklch(0.965 0.02 88);
-  --app-bg-end: oklch(0.955 0.024 84);
-  --app-background:
-    radial-gradient(78% 52% at 50% -14%, color-mix(in oklch, oklch(0.74 0.152 84) 24%, transparent) 0%, transparent 62%),
-    linear-gradient(180deg, oklch(0.98 0.014 92) 0%, oklch(0.955 0.024 84) 100%);
-
-  --header-bg: oklch(0.985 0.01 90);
-  --header-chip-bg: color-mix(in oklch, var(--header-bg) 74%, var(--card));
-  --header-avatar-bg: color-mix(in oklch, var(--accent) 18%, var(--header-bg));
+  --header-bg: oklch(0.995 0.01 85);
+  --header-chip-bg: color-mix(in oklch, var(--muted) 55%, var(--card));
+  --header-avatar-bg: color-mix(in oklch, var(--accent) 30%, var(--card));
   --header-avatar-fg: var(--foreground);
-  --header-border-subtle: color-mix(in oklch, var(--header-bg) 26%, var(--border));
-  --header-border-strong: color-mix(in oklch, var(--primary) 50%, var(--ring));
+  --header-border-subtle: var(--border);
+  --header-border-strong: var(--ring);
 }
 
 [data-theme="paladins"].dark {
-  /* base shadcn — vigília: azul-meia-noite, ouro de vela, safira luminosa */
-  --background: oklch(0.19 0.03 265);
-  --foreground: oklch(0.94 0.014 88);
-  --card: oklch(0.235 0.032 265);
-  --card-foreground: oklch(0.94 0.014 88);
-  --popover: oklch(0.235 0.032 265);
-  --popover-foreground: oklch(0.94 0.014 88);
-  --primary: oklch(0.82 0.15 85);
-  --primary-foreground: oklch(0.2 0.03 80);
-  --secondary: oklch(0.29 0.03 265);
-  --secondary-foreground: oklch(0.94 0.014 88);
-  --muted: oklch(0.29 0.03 265);
-  --muted-foreground: oklch(0.72 0.024 260);
-  --accent: oklch(0.68 0.16 258);
-  --accent-foreground: oklch(0.14 0.03 260);
-  --destructive: oklch(0.64 0.21 28);
-  --destructive-foreground: oklch(0.98 0.01 28);
-  --border: oklch(0.36 0.03 262);
-  --input: oklch(0.36 0.03 262);
-  --ring: oklch(0.82 0.15 85);
+  /* base shadcn — quase-preto quente (nunca frio), dourado menos saturado que no claro. */
+  --background: oklch(0.19 0.012 70);
+  --foreground: oklch(0.92 0.015 80);
+  --card: oklch(0.23 0.015 72);
+  --card-foreground: oklch(0.95 0.012 80);
+  --popover: oklch(0.21 0.015 72);
+  --popover-foreground: oklch(0.95 0.012 80);
+  --primary: oklch(0.7 0.13 80);
+  --primary-foreground: oklch(0.18 0.02 70);
+  --secondary: oklch(0.28 0.015 72);
+  --secondary-foreground: oklch(0.95 0.012 80);
+  --muted: oklch(0.28 0.015 72);
+  --muted-foreground: oklch(0.66 0.015 75);
+  --accent: oklch(0.34 0.04 80);
+  --accent-foreground: oklch(0.92 0.02 80);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.97 0.01 25);
+  --border: oklch(0.32 0.015 72);
+  --input: oklch(0.3 0.015 72);
+  --ring: oklch(0.66 0.12 80);
 
-  --shadow-color: oklch(0.08 0.02 265);
-  --shadow-color-strong: oklch(0.04 0.014 265);
+  --shadow-color: oklch(0.03 0 0);
+  --shadow-color-strong: oklch(0 0 0);
   --shadow-color-soft: color-mix(in oklch, var(--shadow-color) 44%, transparent);
   --shadow-color-strong-soft: color-mix(in oklch, var(--shadow-color-strong) 40%, transparent);
-  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 18px 48px -28px var(--shadow-color-soft);
-  --shadow-float: 0 20px 50px -26px var(--shadow-color-strong-soft);
-  --shadow-header: 0 1px 0 0 color-mix(in oklch, var(--primary) 44%, var(--border));
+  --shadow-panel: 0 1px 2px -1px var(--shadow-color-strong-soft), 0 12px 28px -14px var(--shadow-color-soft);
+  --shadow-float: 0 2px 6px -2px var(--shadow-color-strong-soft), 0 18px 38px -16px var(--shadow-color-strong-soft);
+  --shadow-header: 0 1px 0 0 var(--border);
 
-  --sidebar-bg-start: oklch(0.2 0.03 265);
-  --sidebar-bg-end: oklch(0.17 0.026 266);
-  --sidebar-bg: linear-gradient(180deg, oklch(0.2 0.03 265) 0%, oklch(0.168 0.026 266) 100%);
-  --sidebar-bg-admin-start: oklch(0.22 0.038 260);
-  --sidebar-bg-admin-end: oklch(0.185 0.032 260);
-  --sidebar-bg-admin: linear-gradient(180deg, oklch(0.22 0.038 260) 0%, oklch(0.183 0.032 260) 100%);
+  --sidebar-bg-start: oklch(0.24 0.02 72);
+  --sidebar-bg-end: oklch(0.2 0.02 70);
+  --sidebar-bg: linear-gradient(180deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+  --sidebar-bg-admin-start: oklch(0.24 0.02 72);
+  --sidebar-bg-admin-end: oklch(0.2 0.02 70);
+  --sidebar-bg-admin: linear-gradient(180deg, var(--sidebar-bg-admin-start) 0%, var(--sidebar-bg-admin-end) 100%);
 
-  --warning: oklch(0.8 0.14 78);
-  --warning-foreground: oklch(0.17 0.02 78);
-  --warning-soft: color-mix(in oklch, var(--warning) 17%, var(--card));
-  --warning-border: color-mix(in oklch, var(--warning) 36%, var(--border));
+  --warning: oklch(0.72 0.14 55);
+  --warning-foreground: oklch(0.18 0.02 55);
+  --warning-soft: color-mix(in oklch, var(--warning) 16%, var(--card));
+  --warning-border: color-mix(in oklch, var(--warning) 32%, var(--border));
 
-  --success: oklch(0.72 0.16 150);
-  --success-foreground: oklch(0.15 0.02 150);
-  --success-soft: color-mix(in oklch, var(--success) 17%, var(--card));
-  --success-border: color-mix(in oklch, var(--success) 36%, var(--border));
+  --success: oklch(0.68 0.12 145);
+  --success-foreground: oklch(0.17 0.02 145);
+  --success-soft: color-mix(in oklch, var(--success) 16%, var(--card));
+  --success-border: color-mix(in oklch, var(--success) 32%, var(--border));
 
   --chart-1: var(--primary);
-  --chart-2: var(--accent);
+  --chart-2: oklch(0.62 0.1 200);
   --chart-3: var(--muted-foreground);
   --chart-4: var(--warning);
   --chart-5: var(--destructive);
-  --chart-6: oklch(0.62 0.14 230);
-  --chart-7: oklch(0.64 0.15 30);
+  --chart-6: oklch(0.6 0.15 235);
+  --chart-7: oklch(0.64 0.16 350);
 
-  --app-bg-start: oklch(0.2 0.03 265);
-  --app-bg-mid: oklch(0.18 0.028 265);
-  --app-bg-end: oklch(0.16 0.024 266);
-  --app-background:
-    radial-gradient(78% 52% at 50% -14%, color-mix(in oklch, oklch(0.82 0.15 85) 20%, transparent) 0%, transparent 58%),
-    linear-gradient(180deg, oklch(0.2 0.03 265) 0%, oklch(0.158 0.024 266) 100%);
+  --app-bg-start: oklch(0.185 0.012 70);
+  --app-bg-mid: oklch(0.18 0.012 70);
+  --app-bg-end: oklch(0.165 0.014 68);
+  --app-background: radial-gradient(
+      130% 90% at 50% 0%,
+      color-mix(in oklch, var(--primary) 12%, transparent) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, var(--app-bg-start) 0%, var(--app-bg-mid) 55%, var(--app-bg-end) 100%);
 
-  --header-bg: oklch(0.215 0.032 265);
-  --header-chip-bg: color-mix(in oklch, var(--header-bg) 74%, var(--card));
-  --header-avatar-bg: color-mix(in oklch, var(--accent) 20%, var(--header-bg));
+  --header-bg: oklch(0.21 0.015 72);
+  --header-chip-bg: color-mix(in oklch, var(--muted) 55%, var(--card));
+  --header-avatar-bg: color-mix(in oklch, var(--accent) 30%, var(--card));
   --header-avatar-fg: var(--foreground);
-  --header-border-subtle: color-mix(in oklch, var(--header-bg) 26%, var(--border));
-  --header-border-strong: color-mix(in oklch, var(--primary) 50%, var(--ring));
-}
-
-/* Identidade sacra — escopada ao tema. Fio de ouro em painéis e controles; base de safira nos
-   inputs. As réguas de losango (divisórias ornamentadas) são renderizadas em JSX pelo ContentSlot,
-   não aqui. */
-[data-theme="paladins"] [data-slot="card"],
-[data-theme="paladins"] .rounded-panel {
-  border: 1px solid color-mix(in oklch, var(--primary) 40%, var(--border));
-}
-[data-theme="paladins"] [data-slot="button"] {
-  border: 1px solid color-mix(in oklch, var(--primary) 46%, var(--border));
-}
-[data-theme="paladins"] [data-slot="input"],
-[data-theme="paladins"] [data-slot="select-trigger"] {
-  border-bottom-width: 2px;
-  border-bottom-color: color-mix(in oklch, var(--accent) 44%, var(--border));
+  --header-border-subtle: var(--border);
+  --header-border-strong: var(--ring);
 }
